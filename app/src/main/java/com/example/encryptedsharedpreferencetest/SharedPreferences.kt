@@ -1,4 +1,4 @@
-package com.example.encryptedsharedpreferencetest
+package com.zapata.security
 
 import android.content.Context
 import android.content.Context.MODE_PRIVATE
@@ -7,17 +7,17 @@ import androidx.core.content.edit
 import com.google.gson.Gson
 
 /*
- * @author Alberto Zapata
+ * @author azapata
  *  nov 2021
  */
-class SharedPreferencesUtil(context: Context) {
+class SharedPreferences(context: Context) {
 
     companion object {
 
-        const val KEY = "myKey"
+        const val KEY = "key"
     }
 
-    val sharedPref: SharedPreferences = context.getSharedPreferences(
+    var sharedPref: SharedPreferences = context.getSharedPreferences(
         "${context.packageName}_${this.javaClass.simpleName}",
         MODE_PRIVATE
     )
@@ -61,6 +61,7 @@ class SharedPreferencesUtil(context: Context) {
             commit()
         }
     }
+
     fun removeAllValues(){
         sharedPref.edit {
             this.clear()
